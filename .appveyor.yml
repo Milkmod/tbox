@@ -1,6 +1,5 @@
 os: 
   - Visual Studio 2015
-  - Visual Studio 2013
 
 platform:
   - Win32
@@ -11,11 +10,9 @@ before_build:
   - cmd: xmake --version
 
 build_script:
-  - cmd: xmake
-  - cmd: xmake p
-  - cmd: if %platform%==Win32 xmake f -m debug
-  - cmd: if %platform%==Win64 xmake f -m debug -a x64
-  - cmd: xmake -r
+  - cmd: if %platform%==Win32 xmake f -c --coroutine=y
+  - cmd: if %platform%==Win64 xmake f -c --coroutine=y -a x64
+  - cmd: xmake 
 
 test_script:
-  - cmd: xmake r demo
+  - cmd: xmake r demo coroutine_semaphore
