@@ -15,4 +15,5 @@ build_script:
   - cmd: xmake 
 
 test_script:
+  - cmd: xmake r demo coroutine_switch
   - cmd: xmake r demo coroutine_semaphore
