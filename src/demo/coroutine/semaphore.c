@@ -15,6 +15,7 @@ static tb_void_t tb_demo_coroutine_semaphore_wait_func(tb_cpointer_t priv)
     // loop
     while (1)
     {
+        tb_trace_i("wait ..");
         // wait it
         tb_long_t ok = tb_co_semaphore_wait(semaphore, -1);
         tb_assert_and_check_break(ok > 0);
@@ -37,9 +38,14 @@ static tb_void_t tb_demo_coroutine_semaphore_post_func(tb_cpointer_t priv)
 
         // post it
         tb_co_semaphore_post(semaphore, 2);
+        
+        tb_trace_i("sleep ..");
  
         // wait some time
         tb_msleep(1000);
+             
+        tb_trace_i("sleep ok");
+        
     }
 }
 
