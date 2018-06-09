@@ -96,7 +96,7 @@ static tb_void_t tb_co_scheduler_make_suspend(tb_co_scheduler_t* scheduler, tb_c
     // append this coroutine to suspend coroutines
     tb_list_entry_insert_tail(&scheduler->coroutines_suspend, (tb_list_entry_ref_t)coroutine);
 }
-static __tb_inline__ tb_coroutine_t* tb_co_scheduler_next_ready(tb_co_scheduler_t* scheduler)
+static tb_coroutine_t* tb_co_scheduler_next_ready(tb_co_scheduler_t* scheduler)
 {
     // check
     tb_assert(scheduler && scheduler->running && tb_list_entry_size(&scheduler->coroutines_ready));
